@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import ModifyCurrentSearch from "./ModifyCurrentSearch";
@@ -15,6 +15,8 @@ export default function SearchBus() {
   const [to, setTo] = useState(query.get("to"));
   const [date, setDate] = useState(query.get("date"));
   const [modify, setModify] = useState(false);
+
+  useEffect(() => {}, []);
 
   function onModifyClicked() {
     setModify(!modify);
@@ -40,6 +42,11 @@ export default function SearchBus() {
             date={date}
           />
         )}
+      </div>
+      <div>
+        <div>
+          Buses <span>Found</span>
+        </div>
       </div>
     </>
   );

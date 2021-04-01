@@ -38,7 +38,7 @@ export default function ModifyCurrentSearch({
   function handleSubmit(event) {
     event.preventDefault();
     history.push(
-      `/search?from=${formData.from}&to=${formData.to}&date=${formData.date}`
+      `/searchbus?from=${formData.from}&to=${formData.to}&date=${formData.date}`
     );
     onModifyClicked();
   }

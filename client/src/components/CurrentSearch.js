@@ -12,13 +12,13 @@ export default function CurrentSearch({ onModifyClicked, from, to, date }) {
   function handlePreviousButton() {
     console.log("previous button clicked");
     setcurrentDate(moment(currentDate).subtract(1, "d").format("YYYY-MM-DD"));
-    history.push(`/search?from=${from}&to=${to}&date=${currentDate}`);
+    history.push(`/searchbus?from=${from}&to=${to}&date=${currentDate}`);
   }
 
   function handleNextButton() {
     console.log("previous button clicked");
     setcurrentDate(moment(currentDate).add(1, "d").format("YYYY-MM-DD"));
-    history.push(`/search?from=${from}&to=${to}&date=${currentDate}`);
+    history.push(`/searchbus?from=${from}&to=${to}&date=${currentDate}`);
   }
 
   return (

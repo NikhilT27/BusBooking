@@ -22,7 +22,7 @@ export default function SearchForm() {
   function handleSubmit(event) {
     if (formData.from != "" && formData.to != "" && formData.date != "") {
       history.push(
-        `/search?from=${formData.from}&to=${formData.to}&date=${formData.date}`
+        `/searchbus?from=${formData.from}&to=${formData.to}&date=${formData.date}`
       );
     }
     event.preventDefault();

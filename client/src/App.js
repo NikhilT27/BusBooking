@@ -17,7 +17,7 @@ function App() {
       <div>
         <Main>
           <Switch>
-            <Route path="/search">
+            <Route path="/searchbus">
               <SearchBus />
             </Route>
             <Route path="/">
