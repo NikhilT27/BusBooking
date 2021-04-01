@@ -66,3 +66,40 @@ $theme-color: #d84f57;
     }
   }
 }
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &-each-box {
+    width: min-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1rem;
+  }
+
+  &-logo {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &-input {
+    border: none;
+    padding: 0.5rem;
+    margin-left: 0.2rem;
+    &:focus {
+      border: 0.1rem solid $theme-color;
+    }
+  }
+
+  &-submit-button {
+    color: white;
+    background-color: $theme-color;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    padding: 1rem 3rem;
+    margin-left: 3rem;
+  }
+}

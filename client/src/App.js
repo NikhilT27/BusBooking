@@ -1,7 +1,15 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
 
 import Main from "./components/Main";
+import Introduction from "./components/Introduction";
+import SearchBus from "./components/SearchBus";
 
 function App() {
   return (
@@ -9,11 +17,11 @@ function App() {
       <div>
         <Main>
           <Switch>
-            <Route path="/result">
-              <div>SearchResult</div>
+            <Route path="/search/:from/:to/:date">
+              <SearchBus />
             </Route>
             <Route path="/">
-              <div>Data</div>
+              <Introduction />
             </Route>
           </Switch>
         </Main>
