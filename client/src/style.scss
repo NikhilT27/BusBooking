@@ -67,6 +67,13 @@ $theme-color: #d84f57;
   }
 }
 
+.introduction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .form {
   display: flex;
   align-items: center;
