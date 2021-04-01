@@ -128,6 +128,73 @@ button {
     margin-left: 3rem;
     border-radius: 0.2rem;
   }
+
+  &-modify {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &-box {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      justify-content: center;
+      padding: 1rem;
+    }
+    &-title {
+      font-size: 0.8rem;
+      color: gray;
+      margin-left: 0.7rem;
+    }
+
+    &-input {
+      border: none;
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin-left: 0.2rem;
+      width: min-content;
+      &:focus {
+        border: 0.1rem solid $theme-color;
+      }
+    }
+
+    &-swap {
+      &-logo {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      &-button {
+        border: none;
+        background-color: transparent;
+
+        &:focus {
+          animation-name: swap-animation;
+          animation-duration: 1s;
+        }
+      }
+    }
+    &-submit-button {
+      border: none;
+      height: min-content;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background-color: $theme-color;
+      padding: 1rem 2rem;
+      margin: 1rem 2rem;
+    }
+
+    &-close {
+      border: none;
+      background-color: transparent;
+      float: right;
+      padding: 0.5rem;
+      &-logo {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
 }
 
 .search {
@@ -202,5 +269,14 @@ button {
         }
       }
     }
+  }
+}
+
+@keyframes swap-animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
