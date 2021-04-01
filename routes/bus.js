@@ -12,7 +12,7 @@ router.get("/search", async function (req, res, next) {
   console.log(req.query.from);
 
   try {
-    const busData = await Bus.find({ to: req.query.to });
+    const busData = await Bus.find({ to: req.query.to, from: req.query.from });
     if (busData) {
       res.send(busData);
     }
@@ -22,66 +22,36 @@ router.get("/search", async function (req, res, next) {
 });
 
 router.post("/saveBus", async function (req, res, next) {
-  var data = req.body.data;
+  var {
+    to,
+    from,
+    ac,
+    type,
+    boarding_point,
+    dropping_point,
+    single_seat_price,
+    share_seat_price,
+    booked_seat,
+    amenities,
+  } = req.body.data;
   try {
     const newSaveBus = new Bus({
-      to: "Nagpur",
-      from: "Nanded",
-      ac: true,
-      type: "Sleeper(2T)",
+      to,
+      from,
+      ac,
+      type,
       timing: [
         {
           departure: new Date().toISOString(),
           arrival: new Date().toISOString(),
         },
       ],
-      boarding_point: [
-        {
-          add_time: 30,
-          placename: "Laxmi",
-          address: "Near Wadekar Nursing Home, Brahmapuri",
-        },
-      ],
-      dropping_point: [
-        {
-          remove_time: 30,
-          placename: "Namaskar Chowk",
-          address: "Namaskar Chowk, Nanded",
-        },
-      ],
-      single_seat_price: 1000,
-      share_seat_price: 800,
-      booked_seat: [
-        {
-          name: "Nikhil Thakare",
-          gender: "male",
-          age: 23,
-          email: "nikhilthakare14@gmail.com",
-          phone: 9405135957,
-          boarding_point: "Laxmi Nagar",
-          dropping_point: "Namaskar Chowk",
-          seatno: "C01",
-        },
-      ],
-      amenities: {
-        charging_point: true,
-        reading_light: true,
-        track_my_bus: true,
-        mobile_ticket: true,
-        newspaper: true,
-        emergency_contact_number: true,
-        blankets: true,
-        pillow: true,
-        cctv: true,
-        movie: true,
-        personaltv: true,
-        wifi: true,
-        water_bottle: true,
-        staff_with_mask: true,
-        hand_sanitiser_provided: true,
-        regular_temperature_check: true,
-        deep_cleaned_bus: true,
-      },
+      boarding_point,
+      dropping_point,
+      single_seat_price,
+      share_seat_price,
+      booked_seat,
+      amenities,
     });
 
     const savedBus = await newSaveBus.save();
