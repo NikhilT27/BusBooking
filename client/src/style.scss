@@ -1,5 +1,9 @@
 $theme-color: #be3421;
 
+button {
+  cursor: pointer;
+}
+
 .header {
   &-box {
     box-sizing: border-box;
@@ -123,5 +127,80 @@ $theme-color: #be3421;
     padding: 1rem 3rem;
     margin-left: 3rem;
     border-radius: 0.2rem;
+  }
+}
+
+.search {
+  &-current {
+    width: 100%;
+    border-bottom: 0.1rem solid black;
+    &-result {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 40vw;
+      font-weight: 600;
+      padding: 1rem;
+      &-arrow {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      &-button {
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        margin: 0rem 1rem;
+        width: min-content;
+      }
+
+      &-date {
+        &-box {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+
+        &-text {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          &-title {
+            font-size: 1rem;
+            font-weight: 600;
+          }
+
+          &-subtitle {
+            font-size: 0.9rem;
+            font-weight: 400;
+          }
+        }
+      }
+
+      &-next {
+        width: 1rem;
+        height: 1rem;
+      }
+      &-previous {
+        transform: rotate(180deg);
+        width: 1rem;
+        height: 1rem;
+      }
+
+      &-modify {
+        border: 0.2rem solid black;
+        padding: 0.5rem 2rem;
+        color: black;
+        background-color: transparent;
+        font-size: 1rem;
+        font-weight: 600;
+
+        &:hover {
+          border: 0.2rem solid $theme-color;
+          color: $theme-color;
+        }
+      }
+    }
   }
 }

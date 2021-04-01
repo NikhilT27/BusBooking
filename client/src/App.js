@@ -17,7 +17,7 @@ function App() {
       <div>
         <Main>
           <Switch>
-            <Route path="/search/:from/:to/:date">
+            <Route path="/search">
               <SearchBus />
             </Route>
             <Route path="/">
