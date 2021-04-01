@@ -1,0 +1,16 @@
+$theme-color: #d84f57;
+
+.header {
+  &-box {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 3rem;
+    color: white;
+    background-color: $theme-color;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0px 2rem;
+    justify-content: space-between;
+  }
+}
