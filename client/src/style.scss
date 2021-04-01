@@ -13,4 +13,56 @@ $theme-color: #d84f57;
     padding: 0px 2rem;
     justify-content: space-between;
   }
+
+  &-logo {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &-user {
+    position: relative;
+    &-logo {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    &-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 6rem;
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+  &-dropdown {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    color: black;
+    background-color: white;
+    padding: 1rem 1rem;
+    list-style-type: none;
+
+    &-button {
+      padding: 0.5rem 0rem;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    &-arrow {
+      width: 1rem;
+      height: 1rem;
+      &-open {
+        width: 1rem;
+        height: 1rem;
+        -ms-transform: rotate(180deg); /* IE 9 */
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
