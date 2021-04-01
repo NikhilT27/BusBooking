@@ -1,4 +1,4 @@
-$theme-color: #d84f57;
+$theme-color: #be3421;
 
 .header {
   &-box {
@@ -68,16 +68,30 @@ $theme-color: #d84f57;
 }
 
 .introduction {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  width: 100vw;
+  height: 33rem;
+  background-color: white;
+  // border: 1px solid black;
+  background-image: url("../src/images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+
+  &-title {
+    font-size: 3rem;
+  }
 }
 
 .form {
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0rem 2rem;
   &-each-box {
     width: min-content;
     display: flex;
@@ -108,5 +122,6 @@ $theme-color: #d84f57;
     border: none;
     padding: 1rem 3rem;
     margin-left: 3rem;
+    border-radius: 0.2rem;
   }
 }

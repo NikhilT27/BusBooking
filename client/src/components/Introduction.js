@@ -5,8 +5,9 @@ import SearchForm from "./SearchForm";
 export default function Introduction() {
   return (
     <div className="introduction">
-      <span>Introduction</span>
+      <h1 className="introduction-title">Online Bus Ticket Booking </h1>
       <SearchForm />
+      <h2></h2>
     </div>
   );
 }
