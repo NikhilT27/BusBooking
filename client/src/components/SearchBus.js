@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 import ModifyCurrentSearch from "./ModifyCurrentSearch";
 import CurrentSearch from "./CurrentSearch";
+import EachBusData from "./EachBusData";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -16,7 +18,28 @@ export default function SearchBus() {
   const [date, setDate] = useState(query.get("date"));
   const [modify, setModify] = useState(false);
 
-  useEffect(() => {}, []);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    let source = axios.CancelToken.source();
+
+    fetchData(source);
+
+    return () => {
+      source.cancel("Cancelling in cleanup");
+    };
+  }, []);
+
+  async function fetchData(source) {
+    const response = await axios.get(`/bus/search?to=${to}&from=${from}`, {
+      cancelToken: source.token,
+    });
+
+    if (response) {
+      console.log(response.data);
+      setData(response.data);
+    }
+  }
 
   function onModifyClicked() {
     setModify(!modify);
@@ -43,10 +66,17 @@ export default function SearchBus() {
           />
         )}
       </div>
-      <div>
-        <div>
-          Buses <span>Found</span>
-        </div>
+      <div className="result">
+        {data.length === 0 ? (
+          <div>Loading</div>
+        ) : (
+          <div>
+            <h3>
+              {data.length} Buses <span className="result-count">Found</span>
+            </h3>
+            <EachBusData />
+          </div>
+        )}
       </div>
     </>
   );

@@ -272,6 +272,124 @@ button {
   }
 }
 
+.result {
+  box-sizing: border-box;
+  padding: 1rem 2rem;
+  width: 100%;
+  min-height: 70vh;
+  &-count {
+    font-weight: 400;
+  }
+
+  &-each {
+    &-data {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: flex-start;
+      justify-content: space-between;
+      &-name {
+        display: flex;
+        flex-direction: column;
+        width: 15%;
+        &-title {
+          padding: 1rem 0rem;
+        }
+        &-type {
+          padding: 1rem 0rem;
+          font-weight: 400;
+          font-size: 0.9rem;
+          color: gray;
+        }
+      }
+      &-departure {
+        display: flex;
+        flex-direction: column;
+        &-time {
+          padding: 1rem 0rem;
+          font-size: 1.1rem;
+          font-weight: 700;
+        }
+        &-place {
+          padding: 1rem 0rem;
+          font-size: 0.9rem;
+          color: gray;
+        }
+      }
+
+      &-arrival {
+        display: flex;
+        flex-direction: column;
+        &-time {
+          padding: 1rem 0rem;
+          font-size: 1.1rem;
+        }
+        &-place {
+          padding: 1rem 0rem;
+          font-size: 0.9rem;
+          color: gray;
+        }
+      }
+      &-total-time {
+        padding: 1rem 0rem;
+        font-size: 1rem;
+      }
+
+      &-price {
+        padding: 1rem 0rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        width: 15%;
+      }
+
+      &-extra {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 0rem;
+        &-available {
+          font-size: 1rem;
+          color: gray;
+        }
+        &-windows {
+          font-size: 1rem;
+          color: gray;
+        }
+      }
+    }
+    &-amenities {
+      display: flex;
+      flex-wrap: wrap;
+      width: 30%;
+
+      &-each {
+        padding: 0.5rem;
+        &-logo {
+          width: 1.5rem;
+        }
+      }
+    }
+    &-seats {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+
+      &-button {
+        border: none;
+        padding: 0.8rem 2rem;
+        color: white;
+        background-color: $theme-color;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.bold {
+  font-weight: 700;
+  color: black;
+}
+
 @keyframes swap-animation {
   from {
     transform: rotate(0deg);
