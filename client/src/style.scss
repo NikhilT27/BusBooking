@@ -385,6 +385,95 @@ button {
   }
 }
 
+.booking {
+  display: flex;
+  flex-direction: column;
+  &-box {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  &-cancel {
+    &-button {
+      border: none;
+      background-color: transparent;
+      position: absolute;
+      right: 3rem;
+    }
+    &-logo {
+      width: 1.5rem;
+    }
+  }
+
+  &-price-button {
+    border: none;
+    width: min-content;
+    height: min-content;
+    margin: 0rem 1rem;
+    padding: 0.5rem 2rem;
+    color: $theme-color;
+    background-color: white;
+    border: 0.2rem solid $theme-color;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  &-price-button-clicked {
+    border: none;
+    color: white;
+    background-color: $theme-color;
+  }
+
+  &-bus-seats {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+}
+
+.deck {
+  box-sizing: border-box;
+  width: 100%;
+  border-left: 0.5rem solid gray;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  &-steering {
+    padding: 1rem;
+    &-logo {
+      width: 1.2rem;
+    }
+  }
+  &-seats {
+    margin-top: -0.5rem;
+    padding: 0.3rem;
+    border-left: 0.15rem solid gray;
+    &-row {
+      display: flex;
+      margin: 1rem 0rem;
+    }
+    &-each {
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      width: 4rem;
+      height: 2rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      // color: white;
+      align-items: center;
+      border: 0.13rem solid gray;
+      margin: 0rem 1rem;
+      &:hover {
+        border: 0.13rem solid black;
+      }
+    }
+  }
+}
+
 .bold {
   font-weight: 700;
   color: black;

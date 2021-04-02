@@ -6,6 +6,10 @@ import BookingSeat from "./BookingSeat";
 export default function EachBusData() {
   const [openSeats, setOpenSeats] = useState(false);
 
+  function openBooking() {
+    setOpenSeats(!openSeats);
+  }
+
   return (
     <div className="result-each">
       <div className="result-each-data">
@@ -43,14 +47,11 @@ export default function EachBusData() {
         <Amenities />
       </div>
       <div className="result-each-seats">
-        <button
-          className="result-each-seats-button"
-          onClick={() => setOpenSeats(!openSeats)}
-        >
+        <button className="result-each-seats-button" onClick={openBooking}>
           {openSeats ? <span>Hide</span> : <span>View</span>} Seat
         </button>
       </div>
-      {openSeats ? <BookingSeat /> : <></>}
+      {openSeats ? <BookingSeat openBooking={openBooking} /> : <></>}
     </div>
   );
 }
