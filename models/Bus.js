@@ -1,11 +1,12 @@
 const { model, Schema } = require("mongoose");
 
 const busSchema = new Schema({
+  name: String,
   to: String,
   from: String,
   ac: Boolean,
   type: String,
-  timing: [{ departure: String, arrival: String }],
+  timing: { departure: String, arrival: String },
   boarding_point: [
     {
       add_time: Number,

@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const Bus = require("../models/Bus");
+var moment = require("moment");
 
 /* GET buses listing. */
 router.get("/", function (req, res, next) {
@@ -23,6 +24,7 @@ router.get("/search", async function (req, res, next) {
 
 router.post("/saveBus", async function (req, res, next) {
   var {
+    name,
     to,
     from,
     ac,
@@ -36,16 +38,16 @@ router.post("/saveBus", async function (req, res, next) {
   } = req.body.data;
   try {
     const newSaveBus = new Bus({
+      name,
       to,
       from,
       ac,
       type,
-      timing: [
-        {
-          departure: new Date().toISOString(),
-          arrival: new Date().toISOString(),
-        },
-      ],
+      timing: {
+        departure: moment().toISOString(),
+        arrival: moment().add(8, "h").toISOString(),
+      },
+
       boarding_point,
       dropping_point,
       single_seat_price,
