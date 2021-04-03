@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import cancel from "../images/cancel.svg";
 import Deck from "./Deck";
+import { useSelector, useDispatch } from "react-redux";
+import { selectBus } from "../features/seats/seatsSlice";
 
-export default function BookingSeat({ openBooking }) {
+export default function BookingSeat({ openBooking, data }) {
+  let busId = useSelector(selectBus);
+  const dispatch = useDispatch();
+  let { share_seat_price, single_seat_price } = data;
+
+  console.log(busId);
   return (
     <div className="booking">
       <div className="booking-box">
@@ -11,17 +18,21 @@ export default function BookingSeat({ openBooking }) {
         </button>
         <h3>Seat Price</h3>
         <button className="booking-price-button">All</button>
-        <button className="booking-price-button">Single</button>
-        <button className="booking-price-button">Share</button>
+        <button className="booking-price-button">{single_seat_price}</button>
+        <button className="booking-price-button">{share_seat_price}</button>
       </div>
       <div className="booking-box">
         <div className="booking-bus-seats">
           <div>
             <h4>Lower Deck</h4>
-            <Deck />
+            <Deck data={data} type="Lower" />
+          </div>
+          <div>
+            <h4>Upper Deck</h4>
+            <Deck data={data} type="Upper" />
           </div>
         </div>
-        <div>Boarding Points</div>
+        {busId === "" ? <div>Available</div> : <div>Boarding Points</div>}
       </div>
     </div>
   );

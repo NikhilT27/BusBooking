@@ -74,7 +74,10 @@ export default function SearchBus() {
             <h3>
               {data.length} Buses <span className="result-count">Found</span>
             </h3>
-            <EachBusData />
+            {data.length != 0 &&
+              data.map((eachbus) => {
+                return <EachBusData key={eachbus._id} data={eachbus} />;
+              })}
           </div>
         )}
       </div>

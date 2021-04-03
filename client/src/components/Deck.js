@@ -2,41 +2,74 @@ import React from "react";
 
 import steering from "../images/steering-wheel.svg";
 import EachDeckSeat from "./EachDeckSeat";
+import { useSelector, useDispatch } from "react-redux";
+import { addSeat, selectSeats } from "../features/seats/seatsSlice";
 
-export default function Deck() {
+export default function Deck({ data, type }) {
+  const seats = useSelector(selectSeats);
+  const dispatch = useDispatch();
+
+  let { _id } = data;
+
+  console.log(seats);
+  let seatEvenNumber = [];
+  let seatEvenAlphabet = [];
+  let seatOddNumber = [];
+  let seatOddAlphabet = [];
+
+  for (let i = 0; i < 10; i++) {
+    if (i % 2 == 0) {
+      seatOddNumber.push(i + 1);
+      seatOddAlphabet.push(String.fromCharCode(65 + i));
+    } else {
+      seatEvenNumber.push(i + 1);
+      seatEvenAlphabet.push(String.fromCharCode(65 + i));
+    }
+  }
+
+  // console.log(
+  //   `Number: Even - ${seatEvenNumber}, Odd - ${seatOddNumber};; Alphabet: Even - ${seatEvenAlphabet}, Odd - ${seatOddAlphabet}`
+  // );
+
   return (
     <div className="deck">
       <div className="deck-steering">
-        <img src={steering} alt="" className="deck-steering-logo" />
+        {type === "Lower" ? (
+          <img src={steering} alt="" className="deck-steering-logo" />
+        ) : (
+          <div className="deck-steering-logo"></div>
+        )}
       </div>
       <div className="deck-seats">
         <div className="deck-seats-row">
-          <EachDeckSeat id="1A" />
-          <button name="3A" className="deck-seats-each">
-            3A
-          </button>
-          <button name="5A" className="deck-seats-each">
-            5A
-          </button>
-          <button className="deck-seats-each">7A</button>
-          <button className="deck-seats-each">9A</button>
+          {type === "Lower"
+            ? seatOddNumber.map((num) => {
+                return <EachDeckSeat key={num} id={`${num}A`} busId={_id} />;
+              })
+            : seatEvenNumber.map((num) => {
+                return <EachDeckSeat key={num} id={`${num}A`} />;
+              })}
         </div>
         <div className="deck-seats-row">
-          <button className="deck-seats-each">1B</button>
-          <button className="deck-seats-each">3B</button>
-          <button className="deck-seats-each">5B</button>
-          <button className="deck-seats-each">7B</button>
-          <button className="deck-seats-each">9B</button>
+          {type === "Lower"
+            ? seatOddNumber.map((num) => {
+                return <EachDeckSeat key={num} id={`${num}B`} />;
+              })
+            : seatEvenNumber.map((num) => {
+                return <EachDeckSeat key={num} id={`${num}B`} />;
+              })}
         </div>
 
         <div className="deck-seats-row"></div>
         <div className="deck-seats-row"></div>
         <div className="deck-seats-row">
-          <button className="deck-seats-each">A</button>
-          <button className="deck-seats-each">C</button>
-          <button className="deck-seats-each">E</button>
-          <button className="deck-seats-each">F</button>
-          <button className="deck-seats-each">G</button>
+          {type === "Lower"
+            ? seatOddAlphabet.map((letter) => {
+                return <EachDeckSeat key={letter} id={`${letter}`} />;
+              })
+            : seatEvenAlphabet.map((letter) => {
+                return <EachDeckSeat key={letter} id={`${letter}`} />;
+              })}
         </div>
       </div>
     </div>

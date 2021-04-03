@@ -470,6 +470,11 @@ button {
       &:hover {
         border: 0.13rem solid black;
       }
+
+      &-select {
+        background-color: black;
+        color: white;
+      }
     }
   }
 }
