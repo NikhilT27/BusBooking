@@ -18,10 +18,12 @@ export default function BookingSeat({ openBooking, data }) {
         <button className="booking-cancel-button" onClick={openBooking}>
           <img src={cancel} className="booking-cancel-logo" />
         </button>
-        <h3>Seat Price</h3>
-        <button className="booking-price-button">All</button>
-        <button className="booking-price-button">{single_seat_price}</button>
-        <button className="booking-price-button">{share_seat_price}</button>
+        <div className="booking-seat-price">
+          <h3>Seat Price</h3>
+          <button className="booking-price-button">All</button>
+          <button className="booking-price-button">{single_seat_price}</button>
+          <button className="booking-price-button">{share_seat_price}</button>
+        </div>
       </div>
       <div className="booking-box">
         <div className="booking-bus-seats">
