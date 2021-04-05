@@ -5,6 +5,7 @@ export const seatsSlice = createSlice({
   initialState: {
     value: [],
     selectedBus: "",
+    seatType: "ALL",
   },
   reducers: {
     addSeat: (state, action) => {
@@ -27,10 +28,14 @@ export const seatsSlice = createSlice({
     emptySeats: (state) => {
       state.value = [];
     },
+
+    addSeatType: (state, action) => {
+      state.seatType = action.payload;
+    },
   },
 });
 
-export const { addSeat, emptySeats } = seatsSlice.actions;
+export const { addSeat, emptySeats, addSeatType } = seatsSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -47,5 +52,6 @@ export const incrementAsync = (amount) => (dispatch) => {
 // in the slice file. For example: `useSelector((state) => state.seats.value)`
 export const selectSeats = (state) => state.seats.value;
 export const selectBus = (state) => state.seats.selectedBus;
+export const selectSeatType = (state) => state.seats.seatType;
 
 export default seatsSlice.reducer;

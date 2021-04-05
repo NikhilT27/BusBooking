@@ -422,7 +422,6 @@ button {
   }
 
   &-price-button {
-    border: none;
     width: min-content;
     height: min-content;
     margin: 0rem 1rem;
@@ -435,7 +434,7 @@ button {
   }
 
   &-price-button-clicked {
-    border: none;
+    border: 0.2rem solid $theme-color;
     color: white;
     background-color: $theme-color;
   }
