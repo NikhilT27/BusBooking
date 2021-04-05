@@ -3,6 +3,8 @@ import cancel from "../images/cancel.svg";
 import Deck from "./Deck";
 import { useSelector, useDispatch } from "react-redux";
 import { selectBus } from "../features/seats/seatsSlice";
+import SeatLegends from "./SeatLegends";
+import BookingOptions from "./BookingOptions";
 
 export default function BookingSeat({ openBooking, data }) {
   let busId = useSelector(selectBus);
@@ -32,7 +34,9 @@ export default function BookingSeat({ openBooking, data }) {
             <Deck data={data} type="Upper" />
           </div>
         </div>
-        {busId === "" ? <div>Available</div> : <div>Boarding Points</div>}
+        <div className="booking-bus-option">
+          {busId === "" ? <SeatLegends /> : <BookingOptions data={data} />}
+        </div>
       </div>
     </div>
   );

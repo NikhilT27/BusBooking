@@ -8,6 +8,7 @@ import moment from "moment";
 
 export default function EachBusData({ data }) {
   let {
+    name,
     _id,
     ac,
     amenities,
@@ -36,25 +37,23 @@ export default function EachBusData({ data }) {
     <div className="result-each">
       <div className="result-each-data">
         <div className="result-each-data-name">
-          <strong className="result-each-data-name-title">
-            Bus Name {_id}
-          </strong>
+          <strong className="result-each-data-name-title">{name}</strong>
           <span className="result-each-data-name-type">{type}</span>
         </div>
         <div className="result-each-data-departure">
           <span className="result-each-data-departure-time">
-            {moment(timing[0].departure).format("HH:mm")}
+            {moment(timing.departure).format("HH:mm")}
           </span>
           <span className="result-each-data-departure-place">
             {boarding_point[0].placename}
           </span>
         </div>
         <span className="result-each-data-total-time">
-          {moment(timing[0].departure).diff(moment(timing[0].arrival), "hours")}
+          {moment(timing.departure).diff(moment(timing.arrival), "hours")}
         </span>
         <div className="result-each-data-arrival">
           <span className="result-each-data-arrival-time">
-            {moment(timing[0].arrival).format("HH:mm")}
+            {moment(timing.arrival).format("HH:mm")}
           </span>
           <span className="result-each-data-arrival-place">
             {dropping_point[0].placename}

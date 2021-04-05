@@ -390,7 +390,7 @@ button {
   flex-direction: column;
   &-box {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 1rem 2rem;
     box-sizing: border-box;
     width: 100%;
@@ -428,6 +428,12 @@ button {
   }
 
   &-bus-seats {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  &-bus-option {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -476,6 +482,263 @@ button {
         color: white;
       }
     }
+  }
+}
+
+.legend {
+  width: 100%;
+  &-sub {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    &-each {
+      margin: 0rem 1rem;
+      padding: 0rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &-logo {
+        width: 4rem;
+        height: 2rem;
+        background-color: white;
+        border: 0.1rem solid black;
+        margin: 0rem 1rem;
+      }
+
+      &-unavailable {
+        background-color: gray;
+      }
+    }
+  }
+}
+
+.booking-option {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border: 0.15rem solid gray;
+  &-button {
+    border: 0rem;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    width: 50%;
+    &-box {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    &-selected {
+      color: $theme-color;
+      border-bottom: 0.3rem solid $theme-color;
+    }
+  }
+
+  &-each {
+    &-checkbox {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      &-logo {
+        &-outer {
+          box-sizing: border-box;
+          width: 1.2rem;
+          height: 1.2rem;
+          border-radius: 1.2rem;
+          border: 0.1rem solid black;
+        }
+        &-select {
+          box-sizing: border-box;
+          width: 1.2rem;
+          height: 1.2rem;
+          border-radius: 1.2rem;
+          border: 0.4rem solid $theme-color;
+        }
+      }
+    }
+
+    &-time {
+      padding: 0rem 2rem;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+  }
+}
+
+.booking-confirm {
+  border-top: 0.1rem solid gray;
+  box-sizing: border-box;
+  padding: 1rem 1rem;
+  width: 100%;
+  &-button {
+    border: none;
+    background-color: $theme-color;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 1rem;
+    width: 100%;
+    &-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.bill {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border: 0.15rem solid gray;
+  &-data {
+    padding: 1rem 0rem;
+    &-seat {
+      font-size: 1rem;
+      font-weight: 700;
+      padding-right: 0.5rem;
+    }
+    &-each {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      &-distance {
+        width: 1rem;
+        border-left: 0.2rem dotted $theme-color;
+      }
+    }
+
+    &-seats {
+      padding: 1rem 1rem;
+      border-top: 0.1rem solid gray;
+      border-bottom: 0.1rem solid gray;
+    }
+    &-button {
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      background-color: transparent;
+      color: rgb(2, 133, 185);
+      width: min-content;
+    }
+
+    &-style {
+      margin: 0rem 1rem;
+      border-left: 00.2rem dotted $theme-color;
+    }
+
+    &-subtitle {
+      font-size: 0.8rem;
+      color: gray;
+    }
+  }
+}
+
+.passenger {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, 0.473);
+  &-scroll {
+    overflow-y: auto;
+    height: 70vh;
+  }
+
+  &-book-ticket-button {
+    width: auto;
+    border: none;
+    background-color: $theme-color;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    padding: 1rem;
+  }
+  &-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 50vw;
+    padding: 0.5rem 2rem;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.452);
+  }
+  &-back-button {
+    border: none;
+    background-color: transparent;
+    padding: 1rem;
+    background-image: url(./images/cancel.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1.5rem 1.5rem;
+  }
+
+  &-information {
+    &-logo {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 1rem;
+    }
+    &-box {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  }
+
+  &-form {
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    margin: 1rem;
+    // border-bottom: 2px solid gray;
+    box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.452);
+    padding: 1rem;
+    &-button {
+      display: none;
+      border: none;
+      background-color: $theme-color;
+      color: white;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+    }
+
+    &-title {
+      margin: 1rem 0rem;
+    }
+
+    &-column {
+      display: flex;
+      flex-direction: column;
+    }
+    &-row {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &-bill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
   }
 }
 
