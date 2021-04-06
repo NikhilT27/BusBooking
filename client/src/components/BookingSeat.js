@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cancel from "../images/cancel.svg";
 import Deck from "./Deck";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,6 +6,8 @@ import {
   addSeatType,
   selectBus,
   selectSeatType,
+  addBookedSeats,
+  emptySeats,
 } from "../features/seats/seatsSlice";
 import SeatLegends from "./SeatLegends";
 import BookingOptions from "./BookingOptions";
@@ -15,13 +17,23 @@ export default function BookingSeat({ openBooking, data }) {
   let seatType = useSelector(selectSeatType);
 
   const dispatch = useDispatch();
-  let { share_seat_price, single_seat_price } = data;
+  let { share_seat_price, single_seat_price, booked_seat } = data;
 
   console.log(busId);
+
+  useEffect(() => {
+    dispatch(addBookedSeats(getBookedSeats()));
+  }, []);
 
   function handleSeatTypeButton(event) {
     dispatch(addSeatType(event.target.name));
   }
+
+  function getBookedSeats() {
+    let value = booked_seat.map((seat) => seat.seatno);
+    return value;
+  }
+
   return (
     <div className="booking">
       <div className="booking-box">
