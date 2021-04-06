@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Amenities from "./Amenities";
 import BookingSeat from "./BookingSeat";
 import { useSelector, useDispatch } from "react-redux";
-import { emptySeats, selectSeats } from "../features/seats/seatsSlice";
+import {
+  emptySeats,
+  emptyBookedSeats,
+  selectSeats,
+  addBookedSeats,
+} from "../features/seats/seatsSlice";
 import moment from "moment";
 
 export default function EachBusData({ data }) {
@@ -30,6 +35,7 @@ export default function EachBusData({ data }) {
     setOpenSeats(!openSeats);
     if (!openSeats) {
       dispatch(emptySeats());
+      dispatch(emptyBookedSeats());
     }
   }
 
