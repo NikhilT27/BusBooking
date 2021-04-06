@@ -1,17 +1,33 @@
 import React, { useState } from "react";
 import EachPassengerForm from "./EachPassengerForm";
 import { useSelector, useDispatch } from "react-redux";
-import { addSeat, selectSeats } from "../features/seats/seatsSlice";
+import {
+  addSeat,
+  selectSeats,
+  selectContactData,
+  selectPassengerData,
+} from "../features/seats/seatsSlice";
 import ContactForm from "./ContactForm";
 import letter from "../images/letter.svg";
 import person from "../images/person.svg";
 
-export default function PassengerDetail({ handleProceedClick, total }) {
+export default function PassengerDetail({
+  handleProceedClick,
+  total,
+  boardingData,
+  droppingData,
+}) {
   const seats = useSelector(selectSeats);
+  const contactData = useSelector(selectContactData);
+  const passengerData = useSelector(selectPassengerData);
+
   const [isSubmitForm, setIsSubmitForm] = useState(false);
 
   function SubmitForm() {
     setIsSubmitForm(true);
+    if (seats.length === passengerData.length && contactData.length != 0) {
+      console.log("Save Data to Database");
+    }
   }
 
   function UnSubmitForm() {
@@ -42,6 +58,8 @@ export default function PassengerDetail({ handleProceedClick, total }) {
                   index={index}
                   isSubmitForm={isSubmitForm}
                   UnSubmitForm={UnSubmitForm}
+                  boardingData={boardingData}
+                  droppingData={droppingData}
                 />
               );
             })}
