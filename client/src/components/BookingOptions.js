@@ -1,7 +1,12 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addSeat, selectSeats } from "../features/seats/seatsSlice";
+import {
+  addSeat,
+  selectSeats,
+  selectContactData,
+  selectPassengerData,
+} from "../features/seats/seatsSlice";
 import PassengerDetail from "./PassengerDetail";
 
 export default function BookingOptions({ data }) {
@@ -80,6 +85,8 @@ export default function BookingOptions({ data }) {
           <PassengerDetail
             handleProceedClick={handleProceedClick}
             total={totalCost()}
+            boardingData={boardingData}
+            droppingData={droppingData}
           />
         ) : (
           <></>
