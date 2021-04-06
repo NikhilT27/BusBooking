@@ -497,6 +497,11 @@ button {
         background-color: black;
         color: white;
       }
+
+      &:disabled {
+        border: 0.13rem solid gray;
+        background-color: gray;
+      }
     }
   }
 }
