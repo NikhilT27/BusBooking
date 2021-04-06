@@ -1,12 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addPassengerData,
+  selectPassengerData,
+} from "../features/seats/seatsSlice";
+
 export default function EachPassengerForm({
   id,
   index,
   isSubmitForm,
   UnSubmitForm,
+  boardingData,
+  droppingData,
 }) {
   const buttonClick = useRef();
+
+  const passengerData = useSelector(selectPassengerData);
+  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -32,8 +43,26 @@ export default function EachPassengerForm({
     buttonClick.current.click();
   }
 
+  function handleSubmit(event) {
+    if (formData.name != "" && formData.gender != "" && formData.age != "") {
+      if (passengerData.includes(formData)) {
+        console.log("includessss");
+      } else {
+        dispatch(
+          addPassengerData({
+            ...formData,
+            seatno: id,
+            boarding_point: boardingData.placename,
+            dropping_point: droppingData.placename,
+          })
+        );
+      }
+    }
+    event.preventDefault();
+  }
+
   return (
-    <form className="passenger-form" onSubmit={() => console.log("Submit")}>
+    <form className="passenger-form" onSubmit={handleSubmit}>
       <label className="passenger-form-title">
         Passenger {index + 1} | <strong>Seat {id}</strong>
       </label>
