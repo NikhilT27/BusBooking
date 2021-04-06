@@ -1,4 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addContactData,
+  selectContactData,
+} from "../features/seats/seatsSlice";
 
 export default function ContactForm({ id, index, isSubmitForm, UnSubmitForm }) {
   const [formData, setFormData] = useState({
@@ -7,6 +12,9 @@ export default function ContactForm({ id, index, isSubmitForm, UnSubmitForm }) {
   });
 
   const buttonClick = useRef();
+
+  const dispatch = useDispatch();
+  const contactData = useSelector(selectContactData);
 
   useEffect(() => {
     if (isSubmitForm) {
@@ -26,8 +34,19 @@ export default function ContactForm({ id, index, isSubmitForm, UnSubmitForm }) {
     buttonClick.current.click();
   }
 
+  function handleSubmit(event) {
+    if (formData.email != "" && formData.phone != "") {
+      if (contactData === formData) {
+        console.log("includessss");
+      } else {
+        dispatch(addContactData(formData));
+      }
+    }
+    event.preventDefault();
+  }
+
   return (
-    <form className="passenger-form" onSubmit={() => console.log("Submit")}>
+    <form className="passenger-form" onSubmit={handleSubmit}>
       <div className="passenger-form-column">
         <label className="passenger-form-title">Email ID</label>
         <input
