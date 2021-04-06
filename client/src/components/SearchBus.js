@@ -5,6 +5,7 @@ import axios from "axios";
 import ModifyCurrentSearch from "./ModifyCurrentSearch";
 import CurrentSearch from "./CurrentSearch";
 import EachBusData from "./EachBusData";
+import Loading from "./Loading";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -68,7 +69,7 @@ export default function SearchBus() {
       </div>
       <div className="result">
         {data.length === 0 ? (
-          <div>Loading</div>
+          <Loading />
         ) : (
           <div>
             <h3>
