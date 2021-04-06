@@ -6,6 +6,9 @@ export const seatsSlice = createSlice({
     value: [],
     selectedBus: "",
     seatType: "ALL",
+    bookedSeats: [],
+    passengerData: [],
+    contactData: {},
   },
   reducers: {
     addSeat: (state, action) => {
@@ -32,10 +35,34 @@ export const seatsSlice = createSlice({
     addSeatType: (state, action) => {
       state.seatType = action.payload;
     },
+
+    addBookedSeats: (state, action) => {
+      state.bookedSeats = action.payload;
+    },
+
+    emptyBookedSeats: (state) => {
+      state.bookedSeats = [];
+    },
+
+    addPassengerData: (state, action) => {
+      state.passengerData.push(action.payload);
+    },
+
+    addContactData: (state, action) => {
+      state.contactData = action.payload;
+    },
   },
 });
 
-export const { addSeat, emptySeats, addSeatType } = seatsSlice.actions;
+export const {
+  addSeat,
+  emptySeats,
+  addSeatType,
+  addBookedSeats,
+  emptyBookedSeats,
+  addPassengerData,
+  addContactData,
+} = seatsSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -53,5 +80,8 @@ export const incrementAsync = (amount) => (dispatch) => {
 export const selectSeats = (state) => state.seats.value;
 export const selectBus = (state) => state.seats.selectedBus;
 export const selectSeatType = (state) => state.seats.seatType;
+export const selectBookedSeats = (state) => state.seats.bookedSeats;
+export const selectPassengerData = (state) => state.seats.passengerData;
+export const selectContactData = (state) => state.seats.contactData;
 
 export default seatsSlice.reducer;
