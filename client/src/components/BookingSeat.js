@@ -27,6 +27,7 @@ export default function BookingSeat({ openBooking, data }) {
 
   function handleSeatTypeButton(event) {
     dispatch(addSeatType(event.target.name));
+    dispatch(emptySeats());
   }
 
   function getBookedSeats() {

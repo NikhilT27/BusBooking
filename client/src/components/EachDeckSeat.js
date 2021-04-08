@@ -14,6 +14,10 @@ export default function EachDeckSeat({ id, busId }) {
   const dispatch = useDispatch();
   const [select, setSelect] = useState(false);
 
+  useEffect(() => {
+    setSelect(false);
+  }, [seatType]);
+
   function handleClick(e) {
     dispatch(addSeat({ name: e.target.name, busId: busId }));
     setSelect(!select);
