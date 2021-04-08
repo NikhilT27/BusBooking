@@ -45,7 +45,20 @@ export const seatsSlice = createSlice({
     },
 
     addPassengerData: (state, action) => {
-      state.passengerData.push(action.payload);
+      let contains = state.passengerData.some((elem) => {
+        return JSON.stringify(action.payload) === JSON.stringify(elem);
+      });
+
+      if (!contains) {
+        let indexValue = state.passengerData.findIndex(
+          (element) => element.seatno === action.payload.seatno
+        );
+        if (indexValue === -1) {
+          state.passengerData.push(action.payload);
+        } else {
+          state.passengerData[indexValue] = action.payload;
+        }
+      }
     },
 
     addContactData: (state, action) => {
