@@ -1,5 +1,5 @@
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addSeat,
@@ -18,6 +18,8 @@ export default function BookingOptions({ data }) {
   const [droppingPoint, setDroppingPoint] = useState("");
   const [showBill, setShowBill] = useState(false);
   const [showPassengerDetail, setShowPassengerDetail] = useState(false);
+
+  const ButtonRef = useRef();
 
   let {
     boarding_point,
@@ -192,19 +194,20 @@ export default function BookingOptions({ data }) {
               return (
                 <li
                   key={each._id}
+                  ref={ButtonRef}
                   name={each._id}
                   className="booking-option-each-checkbox"
                   onClick={() => {
                     handleCheckboxClick(each._id);
                   }}
                 >
-                  <div
+                  <button
                     className={
                       boardingPoint === each._id || droppingPoint === each._id
                         ? "booking-option-each-checkbox-logo-select"
                         : "booking-option-each-checkbox-logo-outer"
                     }
-                  ></div>
+                  ></button>
                   <span className="booking-option-each-time">
                     {selectedOption === "booking"
                       ? moment(timing.arrival)
