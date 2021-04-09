@@ -71,12 +71,13 @@ router.post("/bookticket", async function (req, res, next) {
     const busData = await Bus.find({ _id: req.body.id });
 
     if (busData != []) {
-      const bookedData = await Bus.updateOne(
+      const bookedData = await Bus.findByIdAndUpdate(
         { _id: req.body.id },
-        { $push: { booked_seat: req.body.data } }
+        { $push: { booked_seat: req.body.data } },
+        { new: true, lean: true }
       );
 
-      res.send(bookedData);
+      res.send(bookedData.booked_seat[bookedData.booked_seat.length - 1]);
     }
   } catch (error) {
     throw new Error(error);
