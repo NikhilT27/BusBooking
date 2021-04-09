@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import EachPassengerForm from "./EachPassengerForm";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+
 import {
   addSeat,
+  emptyAll,
+  selectBus,
   selectSeats,
   selectContactData,
   selectPassengerData,
@@ -20,6 +25,10 @@ export default function PassengerDetail({
   const seats = useSelector(selectSeats);
   const contactData = useSelector(selectContactData);
   const passengerData = useSelector(selectPassengerData);
+  let busId = useSelector(selectBus);
+
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const [isSubmitForm, setIsSubmitForm] = useState(false);
 
@@ -27,11 +36,43 @@ export default function PassengerDetail({
     setIsSubmitForm(true);
     if (seats.length === passengerData.length && contactData.length != 0) {
       console.log("Save Data to Database");
+      bookTickets();
     }
   }
 
   function UnSubmitForm() {
     setIsSubmitForm(false);
+  }
+
+  async function bookTickets() {
+    const requests = passengerData.map((each) =>
+      axios
+        .post("/bus/bookticket", {
+          id: busId,
+          data: {
+            name: each.name,
+            gender: each.gender,
+            age: parseInt(each.age),
+            email: "nikhilthakare14@gmail.com",
+            phone: 9405135957,
+            boarding_point: each.boarding_point,
+            dropping_point: each.dropping_point,
+            seatno: each.seatno,
+          },
+        })
+        .catch((err) => null)
+    );
+
+    try {
+      const responses = await axios.all(requests);
+      if (responses && responses.length != 0) {
+        history.push("/");
+        dispatch(emptyAll());
+      }
+      console.log(responses);
+    } catch (err) {
+      console.log(err.message);
+    }
   }
 
   return (
