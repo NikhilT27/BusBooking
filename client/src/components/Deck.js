@@ -47,16 +47,16 @@ export default function Deck({ data, type }) {
                 return <EachDeckSeat key={num} id={`${num}A`} busId={_id} />;
               })
             : seatEvenNumber.map((num) => {
-                return <EachDeckSeat key={num} id={`${num}A`} />;
+                return <EachDeckSeat key={num} id={`${num}A`} busId={_id} />;
               })}
         </div>
         <div className="deck-seats-row">
           {type === "Lower"
             ? seatOddNumber.map((num) => {
-                return <EachDeckSeat key={num} id={`${num}B`} />;
+                return <EachDeckSeat key={num} id={`${num}B`} busId={_id} />;
               })
             : seatEvenNumber.map((num) => {
-                return <EachDeckSeat key={num} id={`${num}B`} />;
+                return <EachDeckSeat key={num} id={`${num}B`} busId={_id} />;
               })}
         </div>
 
@@ -65,10 +65,14 @@ export default function Deck({ data, type }) {
         <div className="deck-seats-row">
           {type === "Lower"
             ? seatOddAlphabet.map((letter) => {
-                return <EachDeckSeat key={letter} id={`${letter}`} />;
+                return (
+                  <EachDeckSeat key={letter} id={`${letter}`} busId={_id} />
+                );
               })
             : seatEvenAlphabet.map((letter) => {
-                return <EachDeckSeat key={letter} id={`${letter}`} />;
+                return (
+                  <EachDeckSeat key={letter} id={`${letter}`} busId={_id} />
+                );
               })}
         </div>
       </div>
