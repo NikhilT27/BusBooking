@@ -64,12 +64,22 @@ export const seatsSlice = createSlice({
     addContactData: (state, action) => {
       state.contactData = action.payload;
     },
+
+    emptyAll: (state) => {
+      state.value = [];
+      state.selectedBus = "";
+      state.seatType = "ALL";
+      state.bookedSeats = [];
+      state.passengerData = [];
+      state.contactData = {};
+    },
   },
 });
 
 export const {
   addSeat,
   emptySeats,
+  emptyAll,
   addSeatType,
   addBookedSeats,
   emptyBookedSeats,
