@@ -561,8 +561,9 @@ button {
     &-checkbox {
       width: 100%;
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+      justify-content: space-evenly;
       &-logo {
         &-outer {
           padding: 0;
@@ -587,6 +588,12 @@ button {
       padding: 0rem 2rem;
       font-size: 1rem;
       font-weight: 700;
+    }
+
+    &-address {
+      width: 70%;
+      line-height: auto;
+      text-align: left;
     }
   }
 }

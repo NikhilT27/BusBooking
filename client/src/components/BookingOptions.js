@@ -217,7 +217,9 @@ export default function BookingOptions({ data }) {
                           .add(each.remove_time, "m")
                           .format("HH:mm")}
                   </span>
-                  <span>{each.address}</span>
+                  <span className="booking-option-each-address">
+                    {each.address}
+                  </span>
                 </li>
               );
             })}
