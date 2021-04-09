@@ -66,8 +66,15 @@ export default function PassengerDetail({
     try {
       const responses = await axios.all(requests);
       if (responses && responses.length != 0) {
-        history.push("/");
         dispatch(emptyAll());
+        console.log(responses);
+        let ticketInfo = responses.map((each) => each.data);
+        history.push({
+          pathname: "/bookedtickets",
+          state: {
+            tickets: ticketInfo,
+          },
+        });
       }
       console.log(responses);
     } catch (err) {
