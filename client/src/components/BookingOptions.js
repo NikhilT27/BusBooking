@@ -53,9 +53,13 @@ export default function BookingOptions({ data }) {
   }
 
   function handleProceedClick() {
-    console.log("Passenger clicked");
-    setShowPassengerDetail(!showPassengerDetail);
+    console.log("Passenger Detail clicked");
+    setShowPassengerDetail(true);
     console.log(showPassengerDetail);
+  }
+
+  function handleCloseClick() {
+    setShowPassengerDetail(false);
   }
 
   function totalCost() {
@@ -77,16 +81,19 @@ export default function BookingOptions({ data }) {
     let boardingData = boarding_point.find(
       (each) => each._id === boardingPoint
     );
+
     let droppingData = dropping_point.find(
       (each) => each._id === droppingPoint
     );
 
+    console.log(boardingData.address);
     return (
       <>
         {showPassengerDetail ? (
           <PassengerDetail
-            handleProceedClick={handleProceedClick}
+            handleCloseClick={handleCloseClick}
             total={totalCost()}
+            timing={timing}
             boardingData={boardingData}
             droppingData={droppingData}
           />
@@ -210,10 +217,10 @@ export default function BookingOptions({ data }) {
                   ></button>
                   <span className="booking-option-each-time">
                     {selectedOption === "booking"
-                      ? moment(timing.arrival)
+                      ? moment(timing.departure)
                           .add(each.add_time, "m")
                           .format("HH:mm")
-                      : moment(timing.departure)
+                      : moment(timing.arrival)
                           .add(each.remove_time, "m")
                           .format("HH:mm")}
                   </span>
