@@ -73,6 +73,7 @@ export default function PassengerDetail({
           pathname: "/bookedtickets",
           state: {
             tickets: ticketInfo,
+            total: total,
           },
         });
       }

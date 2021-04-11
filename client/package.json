@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "https://busbooking-backend-27.herokuapp.com",
   "dependencies": {
+    "@react-pdf/renderer": "^2.0.2",
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
