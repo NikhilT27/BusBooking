@@ -36,9 +36,20 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
   },
+  logoBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   logo: {
     width: 50,
     height: 50,
+    marginRight: 10,
+  },
+
+  companyTitle: {
+    fontSize: 18,
+    color: "#be3421",
   },
   queryBox: {
     flexDirection: "row",
@@ -161,9 +172,9 @@ const MyDocument = ({ ticketInfo, totalCost, busData }) => (
     <Page size="A4" style={styles.page}>
       <View style={styles.ticketBox}>
         <View style={styles.titleBox}>
-          <View>
+          <View style={styles.logoBox}>
             <Image src={busLogo} style={styles.logo} />
-            <Text>ThunderBirdBus</Text>
+            <Text style={styles.companyTitle}>ThunderBirdBus</Text>
           </View>
           <View style={styles.queryBox}>
             <Image src={phoneLogo} style={styles.phoneLogo} />
@@ -177,7 +188,7 @@ const MyDocument = ({ ticketInfo, totalCost, busData }) => (
           <Text style={styles.travelInfoText}>
             {busData.from} to {busData.to}
           </Text>
-          <Text style={styles.travelInfoText}>Date</Text>
+          <Text style={styles.travelInfoText}>{ticketInfo[0].date}</Text>
           <Text style={styles.travelInfoText}>{busData.name}</Text>
         </View>
         {ticketInfo.map((each) => {
@@ -217,7 +228,10 @@ const MyDocument = ({ ticketInfo, totalCost, busData }) => (
             </View>
             <View style={styles.busDetailSubBox}>
               <Text style={styles.busDetailTextTitle}>Reporting Time</Text>
-              <Text style={styles.busDetailText}>From To</Text>
+              <Text style={styles.busDetailText}>
+                {" "}
+                {ticketInfo[0].boarding_time}
+              </Text>
             </View>
             <View style={styles.busDetailSubBox}>
               <Text style={styles.busDetailTextTitle}>Boarding Point</Text>
@@ -236,11 +250,14 @@ const MyDocument = ({ ticketInfo, totalCost, busData }) => (
           <View style={styles.busDetailTwo}>
             <View style={styles.busDetailSubBox}>
               <Text style={styles.busDetailTextTitle}>Total Fare</Text>
-              <Text style={styles.busDetailText}>{totalCost}</Text>
+              <Text style={styles.busDetailText}>Rs. {totalCost}</Text>
             </View>
             <View style={styles.busDetailSubBox}>
               <Text style={styles.busDetailTextTitle}>Departure Time</Text>
-              <Text style={styles.busDetailText}>From To</Text>
+              <Text style={styles.busDetailText}>
+                {" "}
+                {ticketInfo[0].dropping_time}
+              </Text>
             </View>
             <View style={styles.busDetailSubBox}>
               <Text style={styles.busDetailTextTitle}>Departure Point</Text>
@@ -267,26 +284,11 @@ export default function BookedTickets() {
   let ticketInfo = location.state.tickets;
   let totalCost = location.state.total;
   let busData = location.state.data;
-  let {
-    name,
-    _id,
-    ac,
-    amenities,
-    boarding_point,
-    dropping_point,
-    booked_seat,
-    from,
-    share_seat_price,
-    single_seat_price,
-    timing,
-    to,
-    type,
-  } = busData;
 
   console.log(ticketInfo);
   return (
-    <div>
-      <PDFViewer width="100%" height="500px">
+    <div className="bookedTickets">
+      <PDFViewer width="90%" height="100%">
         <MyDocument
           ticketInfo={ticketInfo}
           totalCost={totalCost}
