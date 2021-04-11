@@ -55,7 +55,7 @@ export default function EachBusData({ data }) {
           </span>
         </div>
         <span className="result-each-data-total-time">
-          {moment(timing.departure).diff(moment(timing.arrival), "hours")}
+          {moment(timing.arrival).diff(moment(timing.departure), "hours")}
         </span>
         <div className="result-each-data-arrival">
           <span className="result-each-data-arrival-time">
