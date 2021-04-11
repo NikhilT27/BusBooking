@@ -12,21 +12,26 @@ import {
   selectContactData,
   selectPassengerData,
   selectSelectedBusData,
+  selectDate,
 } from "../features/seats/seatsSlice";
 import ContactForm from "./ContactForm";
 import letter from "../images/letter.svg";
 import person from "../images/person.svg";
+import moment from "moment";
 
 export default function PassengerDetail({
-  handleProceedClick,
+  handleCloseClick,
   total,
   boardingData,
   droppingData,
+  timing,
 }) {
   const seats = useSelector(selectSeats);
   const contactData = useSelector(selectContactData);
   const passengerData = useSelector(selectPassengerData);
   const busData = useSelector(selectSelectedBusData);
+  const date = useSelector(selectDate);
+
   let busId = useSelector(selectBus);
 
   const dispatch = useDispatch();
@@ -59,6 +64,14 @@ export default function PassengerDetail({
             phone: 9405135957,
             boarding_point: each.boarding_point,
             dropping_point: each.dropping_point,
+            boarding_time: moment(timing.arrival)
+              .add(boardingData.add_time, "m")
+              .format("HH:mm A"),
+            dropping_time: moment(timing.departure)
+              .add(droppingData.remove_time, "m")
+              .format("HH:mm A"),
+            price: total,
+            date: moment(date).format("dddd, MMMM DD, YYYY"),
             seatno: each.seatno,
           },
         })
@@ -93,7 +106,7 @@ export default function PassengerDetail({
           <h3>Passenger Detail</h3>
           <button
             className="passenger-back-button"
-            onClick={handleProceedClick}
+            onClick={handleCloseClick}
           ></button>
         </div>
         <div className="passenger-scroll">
