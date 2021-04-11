@@ -7,7 +7,7 @@ import {
   selectBookedSeats,
 } from "../features/seats/seatsSlice";
 
-export default function EachDeckSeat({ id, busId }) {
+export default function EachDeckSeat({ id, busId, data }) {
   const seats = useSelector(selectSeats);
   const seatType = useSelector(selectSeatType);
   const bookedSeatsData = useSelector(selectBookedSeats);
@@ -19,7 +19,7 @@ export default function EachDeckSeat({ id, busId }) {
   }, [seatType]);
 
   function handleClick(e) {
-    dispatch(addSeat({ name: e.target.name, busId: busId }));
+    dispatch(addSeat({ name: e.target.name, busId: busId, data: data }));
     setSelect(!select);
   }
 

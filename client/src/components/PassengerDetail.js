@@ -11,6 +11,7 @@ import {
   selectSeats,
   selectContactData,
   selectPassengerData,
+  selectSelectedBusData,
 } from "../features/seats/seatsSlice";
 import ContactForm from "./ContactForm";
 import letter from "../images/letter.svg";
@@ -25,6 +26,7 @@ export default function PassengerDetail({
   const seats = useSelector(selectSeats);
   const contactData = useSelector(selectContactData);
   const passengerData = useSelector(selectPassengerData);
+  const busData = useSelector(selectSelectedBusData);
   let busId = useSelector(selectBus);
 
   const dispatch = useDispatch();
@@ -74,6 +76,7 @@ export default function PassengerDetail({
           state: {
             tickets: ticketInfo,
             total: total,
+            data: busData,
           },
         });
       }

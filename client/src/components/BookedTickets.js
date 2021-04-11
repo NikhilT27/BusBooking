@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const MyDocument = ({ ticketInfo, totalCost }) => (
+const MyDocument = ({ ticketInfo, totalCost, busData }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.ticketBox}>
@@ -174,9 +174,11 @@ const MyDocument = ({ ticketInfo, totalCost }) => (
           </View>
         </View>
         <View style={styles.travelInfoBox}>
-          <Text style={styles.travelInfoText}>From To</Text>
+          <Text style={styles.travelInfoText}>
+            {busData.from} to {busData.to}
+          </Text>
           <Text style={styles.travelInfoText}>Date</Text>
-          <Text style={styles.travelInfoText}>Travel Name</Text>
+          <Text style={styles.travelInfoText}>{busData.name}</Text>
         </View>
         {ticketInfo.map((each) => {
           return (
@@ -209,7 +211,9 @@ const MyDocument = ({ ticketInfo, totalCost }) => (
           <View style={styles.busDetailOne}>
             <View style={styles.busDetailSubBox}>
               <Text style={styles.busDetailTextTitle}>Bus Type</Text>
-              <Text style={styles.busDetailText}>From To</Text>
+              <Text style={styles.busDetailText}>
+                {busData.type} {busData.ac ? "AC" : "Non AC"}
+              </Text>
             </View>
             <View style={styles.busDetailSubBox}>
               <Text style={styles.busDetailTextTitle}>Reporting Time</Text>
@@ -262,11 +266,32 @@ export default function BookedTickets() {
   const location = useLocation();
   let ticketInfo = location.state.tickets;
   let totalCost = location.state.total;
+  let busData = location.state.data;
+  let {
+    name,
+    _id,
+    ac,
+    amenities,
+    boarding_point,
+    dropping_point,
+    booked_seat,
+    from,
+    share_seat_price,
+    single_seat_price,
+    timing,
+    to,
+    type,
+  } = busData;
+
   console.log(ticketInfo);
   return (
     <div>
       <PDFViewer width="100%" height="500px">
-        <MyDocument ticketInfo={ticketInfo} totalCost={totalCost} />
+        <MyDocument
+          ticketInfo={ticketInfo}
+          totalCost={totalCost}
+          busData={busData}
+        />
       </PDFViewer>
     </div>
   );

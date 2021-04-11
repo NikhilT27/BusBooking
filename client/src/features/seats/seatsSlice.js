@@ -5,6 +5,7 @@ export const seatsSlice = createSlice({
   initialState: {
     value: [],
     selectedBus: "",
+    selectedBusData: {},
     seatType: "ALL",
     bookedSeats: [],
     passengerData: [],
@@ -12,7 +13,7 @@ export const seatsSlice = createSlice({
   },
   reducers: {
     addSeat: (state, action) => {
-      let { name, busId } = action.payload;
+      let { name, busId, data } = action.payload;
       if (state.value.includes(name)) {
         let index = state.value.indexOf(name);
 
@@ -23,8 +24,11 @@ export const seatsSlice = createSlice({
 
       if (state.value.length !== 0) {
         state.selectedBus = busId;
+        state.selectedBusData = data;
       } else {
+        let emptyData = {};
         state.selectedBus = "";
+        state.selectedBusData = emptyData;
       }
     },
 
@@ -106,5 +110,6 @@ export const selectSeatType = (state) => state.seats.seatType;
 export const selectBookedSeats = (state) => state.seats.bookedSeats;
 export const selectPassengerData = (state) => state.seats.passengerData;
 export const selectContactData = (state) => state.seats.contactData;
+export const selectSelectedBusData = (state) => state.seats.selectedBusData;
 
 export default seatsSlice.reducer;
