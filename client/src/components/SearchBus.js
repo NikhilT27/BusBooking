@@ -6,6 +6,8 @@ import ModifyCurrentSearch from "./ModifyCurrentSearch";
 import CurrentSearch from "./CurrentSearch";
 import EachBusData from "./EachBusData";
 import Loading from "./Loading";
+import { addDate } from "../features/seats/seatsSlice";
+import { useDispatch } from "react-redux";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -13,23 +15,25 @@ function useQuery() {
 
 export default function SearchBus() {
   let query = useQuery();
+  let from = query.get("from");
+  let to = query.get("to");
+  let date = query.get("date");
 
-  const [from, setFrom] = useState(query.get("from"));
-  const [to, setTo] = useState(query.get("to"));
-  const [date, setDate] = useState(query.get("date"));
+  let dispatch = useDispatch();
+
   const [modify, setModify] = useState(false);
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
     let source = axios.CancelToken.source();
-
+    dispatch(addDate(date));
     fetchData(source);
 
     return () => {
       source.cancel("Cancelling in cleanup");
     };
-  }, []);
+  }, [from, to, date]);
 
   async function fetchData(source) {
     const response = await axios.get(`/bus/search?to=${to}&from=${from}`, {
