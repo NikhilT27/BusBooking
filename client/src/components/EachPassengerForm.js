@@ -52,8 +52,8 @@ export default function EachPassengerForm({
           addPassengerData({
             ...formData,
             seatno: id,
-            boarding_point: boardingData.placename,
-            dropping_point: droppingData.placename,
+            boarding_point: boardingData.address,
+            dropping_point: droppingData.address,
           })
         );
       }
