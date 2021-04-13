@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { useHistory } from "react-router-dom";
 
 import building from "../images/building.svg";
+import CitiesData from "./cities.json";
 
 export default function SearchForm() {
   let history = useHistory();
@@ -11,6 +12,12 @@ export default function SearchForm() {
     to: "",
     date: moment().format("YYYY-MM-DD"),
   });
+
+  const [cityData, setCityData] = useState([]);
+
+  useEffect(() => {
+    setCityData(getCity());
+  }, []);
 
   function handleChange(event) {
     setFormData({
@@ -27,6 +34,36 @@ export default function SearchForm() {
     }
     event.preventDefault();
   }
+
+  function handleToButton(event) {
+    setFormData({
+      ...formData,
+      ["to"]: event.target.id,
+    });
+    event.preventDefault();
+  }
+
+  function handleFromButton(event) {
+    setFormData({
+      ...formData,
+      ["from"]: event.target.id,
+    });
+    event.preventDefault();
+  }
+
+  function capitalize(word) {
+    const lower = word.toLowerCase();
+    return word.charAt(0).toUpperCase() + lower.slice(1);
+  }
+
+  function getCity() {
+    let city = JSON.parse(JSON.stringify(CitiesData));
+
+    let cities = city.map((each) => each.city);
+
+    return cities;
+  }
+
   return (
     <>
       <form className="form" onSubmit={handleSubmit}>
@@ -36,10 +73,32 @@ export default function SearchForm() {
             name="from"
             type="text"
             placeholder="FROM"
-            value={formData.from}
+            value={capitalize(formData.from)}
             onChange={handleChange}
             className="form-input"
+            required={true}
           ></input>
+          {formData.from === "" ? (
+            <div></div>
+          ) : (
+            <div className="form-input-select-box">
+              {cityData.map((each) => {
+                if (formData.from === each.slice(0, formData.from.length)) {
+                  return (
+                    <button
+                      id={each}
+                      onClick={handleFromButton}
+                      className="form-input-select"
+                    >
+                      {each}
+                    </button>
+                  );
+                }
+
+                return <></>;
+              })}
+            </div>
+          )}
         </div>
         <div className="form-each-box">
           <img src={building} alt="" className="form-logo" />
@@ -47,10 +106,32 @@ export default function SearchForm() {
             name="to"
             type="text"
             placeholder="TO"
-            value={formData.to}
+            value={capitalize(formData.to)}
             onChange={handleChange}
             className="form-input"
+            required={true}
           ></input>
+          {formData.to === "" ? (
+            <div></div>
+          ) : (
+            <div className="form-input-select-box">
+              {cityData.map((each) => {
+                if (formData.to === each.slice(0, formData.to.length)) {
+                  return (
+                    <button
+                      id={each}
+                      onClick={handleToButton}
+                      className="form-input-select"
+                    >
+                      {each}
+                    </button>
+                  );
+                }
+
+                return <></>;
+              })}
+            </div>
+          )}
         </div>
         <div className="form-each-box">
           <img src={building} alt="" className="form-logo" />
