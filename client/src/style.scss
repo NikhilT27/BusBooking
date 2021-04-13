@@ -1,4 +1,7 @@
-$theme-color: #be3421;
+// $theme-color: #be3421;
+$theme-color: rgba(7, 122, 163, 0.796);
+$payment-color: #32ba7c;
+$footer-color: #1b2330;
 
 button {
   cursor: pointer;
@@ -77,10 +80,8 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 100vw;
+  width: 100%;
   height: 33rem;
-  background-color: white;
-  // border: 1px solid black;
   background-image: url("../src/images/hero.jpg");
   background-size: cover;
   background-position: center;
@@ -97,6 +98,7 @@ button {
   justify-content: center;
   padding: 0rem 2rem;
   &-each-box {
+    position: relative;
     width: min-content;
     display: flex;
     align-items: center;
@@ -115,6 +117,28 @@ button {
     margin-left: 0.2rem;
     &:focus {
       border: 0.1rem solid $theme-color;
+    }
+
+    &-select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: inherit;
+      border: 0;
+      background-color: white;
+      padding: 1rem;
+      &-box {
+        position: absolute;
+        left: 0%;
+        top: 100%;
+        width: 100%;
+        height: 150px;
+        overflow-y: auto;
+      }
+
+      &-option {
+        background-color: white;
+      }
     }
   }
 
@@ -779,6 +803,103 @@ button {
   height: 85vh;
 }
 
+.payment {
+  &-color {
+    background-color: $payment-color;
+  }
+  &-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 50vw;
+    padding: 0.5rem 2rem;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.452);
+  }
+  &-box {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+  }
+  &-logo {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  &-title {
+    font-size: 2rem;
+    color: $payment-color;
+  }
+  &-pdf {
+    margin-top: 1rem;
+  }
+  &-amount {
+    &-box {
+      width: 70%;
+      border: 0.2rem solid $payment-color;
+      padding: 3rem;
+      display: flex;
+      align-self: center;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-title {
+      font-size: 1.2rem;
+    }
+
+    &-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
+}
+
+.footer {
+  color: lightgray;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: $footer-color;
+  &-content {
+    width: 30vw;
+  }
+  &-logo {
+    width: 4rem;
+    height: 4rem;
+  }
+  &-media {
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem solid lightgray;
+    border-radius: 4rem;
+    background-color: transparent;
+    margin-right: 1rem;
+    &-logo {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+    &-box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}
+
 .bold {
   font-weight: 700;
   color: black;
@@ -871,4 +992,56 @@ button {
     transform: scale(1);
     -webkit-transform: scale(1);
   }
+}
+
+//Payment Loading
+
+.payment-loading {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  &-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    &-box {
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &-half-circle {
+    position: absolute;
+    top: 50%;
+    left: 50vw;
+    transform: translate(0, -50%);
+    height: 60px;
+    width: 30px;
+    border-radius: 0 100px 100px 0;
+    background-color: rgba(0, 0, 0, 0.473);
+    filter: "blur";
+  }
+}
+
+.payment-dot1,
+.payment-dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: $payment-color;
+  border-radius: 100%;
+
+  -webkit-animation: sk-bounce 2s infinite ease-in-out;
+  animation: sk-bounce 2s infinite ease-in-out;
+}
+
+.payment-dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
 }
