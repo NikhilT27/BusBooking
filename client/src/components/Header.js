@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import user from "../images/user.svg";
-import bus from "../images/bus.svg";
+import bus from "../images/bus-side-view-white.svg";
 import busDark from "../images/bus-dark.svg";
 import arrow from "../images/arrow-down.svg";
 
@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <div className="header-box">
       <Link to="/">
-        <img src={busDark} alt="BusBooking" className="header-logo" />
+        <img src={bus} alt="BusBooking" className="header-logo" />
       </Link>
       <div className="header-user">
         <button
