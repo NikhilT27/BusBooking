@@ -22,6 +22,7 @@ export default function SearchBus() {
   let dispatch = useDispatch();
 
   const [modify, setModify] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [data, setData] = useState([]);
 
@@ -36,6 +37,7 @@ export default function SearchBus() {
   }, [from, to, date]);
 
   async function fetchData(source) {
+    setIsLoading(true);
     const response = await axios.get(`/bus/search?to=${to}&from=${from}`, {
       cancelToken: source.token,
     });
@@ -43,6 +45,7 @@ export default function SearchBus() {
     if (response) {
       console.log(response.data);
       setData(response.data);
+      setIsLoading(false);
     }
   }
 
@@ -72,18 +75,27 @@ export default function SearchBus() {
         )}
       </div>
       <div className="result">
-        {data.length === 0 ? (
+        {isLoading ? (
           <Loading />
         ) : (
-          <div>
-            <h3>
-              {data.length} Buses <span className="result-count">Found</span>
-            </h3>
-            {data.length != 0 &&
-              data.map((eachbus) => {
-                return <EachBusData key={eachbus._id} data={eachbus} />;
-              })}
-          </div>
+          <>
+            {data.length === 0 ? (
+              <div>
+                <h3>No Result!!</h3>
+              </div>
+            ) : (
+              <div>
+                <h3>
+                  {data.length} Buses{" "}
+                  <span className="result-count">Found</span>
+                </h3>
+                {data.length != 0 &&
+                  data.map((eachbus) => {
+                    return <EachBusData key={eachbus._id} data={eachbus} />;
+                  })}
+              </div>
+            )}
+          </>
         )}
       </div>
     </>
