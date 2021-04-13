@@ -47,15 +47,17 @@ export default function BookingOptions({ data }) {
   }
 
   function handleContinueClick() {
-    if (boardingPoint !== "" && droppingPoint !== "") {
-      setShowBill(!showBill);
+    if (totalCost() != 0) {
+      if (boardingPoint !== "" && droppingPoint !== "") {
+        setShowBill(!showBill);
+      }
     }
   }
 
   function handleProceedClick() {
-    console.log("Passenger Detail clicked");
-    setShowPassengerDetail(true);
-    console.log(showPassengerDetail);
+    if (totalCost() != 0) {
+      setShowPassengerDetail(true);
+    }
   }
 
   function handleCloseClick() {
