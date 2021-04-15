@@ -76,7 +76,9 @@ export default function SearchBus() {
       </div>
       <div className="result">
         {isLoading ? (
-          <Loading />
+          <div className="result-loading">
+            <Loading />
+          </div>
         ) : (
           <>
             {data.length === 0 ? (

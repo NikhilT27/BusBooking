@@ -56,6 +56,7 @@ export default function ContactForm({ id, index, isSubmitForm, UnSubmitForm }) {
           placeholder="Email"
           value={formData.email}
           required="required"
+          className="passenger-form-input"
         ></input>
       </div>
       <div className="passenger-form-column">
@@ -68,6 +69,7 @@ export default function ContactForm({ id, index, isSubmitForm, UnSubmitForm }) {
           placeholder="Phone"
           value={formData.phone}
           required="required"
+          className="passenger-form-input"
         ></input>
       </div>
       <button type="submit" className="passenger-form-button" ref={buttonClick}>

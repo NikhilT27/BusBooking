@@ -75,6 +75,7 @@ export default function EachPassengerForm({
           placeholder="Name"
           value={formData.name}
           required="required"
+          className="passenger-form-input"
         ></input>
       </div>
       <div className="passenger-form-row passenger-form-row-disable">
@@ -110,6 +111,7 @@ export default function EachPassengerForm({
             placeholder="Age"
             value={formData.age}
             required="required"
+            className="passenger-form-input"
           ></input>
         </div>
       </div>
