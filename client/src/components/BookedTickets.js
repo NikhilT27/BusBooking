@@ -174,7 +174,7 @@ const MyDocument = ({ ticketInfo, totalCost, busData }) => (
         <View style={styles.titleBox}>
           <View style={styles.logoBox}>
             <Image src={busLogo} style={styles.logo} />
-            <Text style={styles.companyTitle}>ThunderBirdBus</Text>
+            <Text style={styles.companyTitle}>NonRedBus</Text>
           </View>
           <View style={styles.queryBox}>
             <Image src={phoneLogo} style={styles.phoneLogo} />
