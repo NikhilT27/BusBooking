@@ -83,7 +83,10 @@ export default function SearchForm() {
           ) : (
             <div className="form-input-select-box">
               {cityData.map((each) => {
-                if (formData.from === each.slice(0, formData.from.length)) {
+                if (
+                  formData.from !== each &&
+                  formData.from === each.slice(0, formData.from.length)
+                ) {
                   return (
                     <button
                       id={each}
@@ -94,8 +97,6 @@ export default function SearchForm() {
                     </button>
                   );
                 }
-
-                return <></>;
               })}
             </div>
           )}
@@ -116,7 +117,10 @@ export default function SearchForm() {
           ) : (
             <div className="form-input-select-box">
               {cityData.map((each) => {
-                if (formData.to === each.slice(0, formData.to.length)) {
+                if (
+                  formData.to !== each &&
+                  formData.to === each.slice(0, formData.to.length)
+                ) {
                   return (
                     <button
                       id={each}

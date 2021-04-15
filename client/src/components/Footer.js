@@ -9,7 +9,7 @@ export default function Footer() {
     <div className="footer">
       <div className="footer-content">
         <img src={logo} className="footer-logo" />
-        <p>
+        <p className="footer-para">
           thunderBirdBus is the world's largest online bus ticket booking
           service trusted by over 18 million happy customers globally.
           thunderBirdBus offers bus ticket booking through its website,iOS and
@@ -27,7 +27,10 @@ export default function Footer() {
             </button>
           </a>
         </div>
-        <p> Ⓒ {moment().format("YYYY")} NikhilT27 All rights reserved </p>
+        <p className="footer-para">
+          {" "}
+          Ⓒ {moment().format("YYYY")} NikhilT27 All rights reserved{" "}
+        </p>
       </div>
     </div>
   );

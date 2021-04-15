@@ -37,7 +37,7 @@ export default function BookingSeat({ openBooking, data }) {
 
   return (
     <div className="booking">
-      <div className="booking-box">
+      <div className="booking-box-seat">
         <button className="booking-cancel-button" onClick={openBooking}>
           <img src={cancel} className="booking-cancel-logo" />
         </button>

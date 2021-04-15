@@ -223,8 +223,24 @@ button {
 
 .search {
   &-current {
-    width: 100%;
+    width: auto;
     border-bottom: 0.1rem solid black;
+    &-from-to {
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: row;
+    }
+
+    &-date-modify {
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: row;
+      margin: 0;
+    }
     &-result {
       display: flex;
       align-items: center;
@@ -235,6 +251,7 @@ button {
       &-arrow {
         width: 1rem;
         height: 1rem;
+        margin: 1rem;
       }
 
       &-button {
@@ -431,6 +448,13 @@ button {
     padding: 1rem 2rem;
     box-sizing: border-box;
     width: 100%;
+    &-seat {
+      display: flex;
+      align-items: flex-start;
+      padding: 1rem 2rem;
+      box-sizing: border-box;
+      width: 100%;
+    }
   }
 
   &-cancel {
@@ -468,7 +492,7 @@ button {
     margin-right: 1rem;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: auto;
   }
 
   &-bus-option {
@@ -1044,4 +1068,890 @@ button {
   bottom: 0;
   -webkit-animation-delay: -1s;
   animation-delay: -1s;
+}
+
+@media screen and (max-width: 1080px) {
+  body {
+    font-size: 16px;
+  }
+
+  .header {
+    &-box {
+      box-sizing: border-box;
+      width: 100vw;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-logo {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    &-user {
+      &-logo {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &-dropdown {
+      &-arrow {
+        width: 0.8rem;
+        height: 0.8rem;
+        &-open {
+          width: 0.8rem;
+          height: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .introduction {
+    height: 30rem;
+
+    &-title {
+      align-self: center;
+      text-align: center;
+      padding: 0rem 2rem;
+      font-size: 2rem;
+    }
+  }
+
+  .form {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    &-each-box {
+      background-color: white;
+      margin-bottom: 1rem;
+    }
+
+    &-logo {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    &-input {
+      &-select {
+        &-box {
+          position: absolute;
+          z-index: 2;
+
+          height: auto;
+          max-height: 150px;
+        }
+      }
+    }
+
+    &-modify {
+      position: relative;
+      flex-direction: column;
+      align-items: flex-start;
+      &-box {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        padding: 1rem;
+      }
+      &-title {
+        font-size: 0.8rem;
+        color: gray;
+        margin-left: 0.7rem;
+      }
+
+      &-input {
+        border: none;
+        font-size: 1rem;
+        padding: 0.5rem;
+        margin-left: 0.2rem;
+        width: min-content;
+        &:focus {
+          border: 0.1rem solid $theme-color;
+        }
+      }
+
+      &-swap {
+        &-logo {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+
+        &-button {
+          align-self: center;
+          position: relative;
+          transform: translate(50%, -50%);
+          margin-bottom: -2rem;
+          background-color: transparent;
+
+          &:focus {
+            animation-name: no;
+            animation-duration: 1s;
+          }
+        }
+      }
+      &-submit-button {
+        border: none;
+        height: min-content;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        background-color: $theme-color;
+        padding: 1rem 2rem;
+        margin: 1rem 2rem;
+      }
+
+      &-close {
+        border: none;
+        background-color: transparent;
+        float: right;
+        padding: 0.5rem;
+        &-logo {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .footer {
+    &-content {
+      width: 100%;
+    }
+    &-logo {
+      width: 3rem;
+      height: 3rem;
+    }
+    &-para {
+      text-align: justify;
+      font-size: 0.8rem;
+    }
+    &-media {
+      display: flex;
+      width: 2rem;
+      height: 2rem;
+      align-items: center;
+      justify-content: center;
+      border: 0.1rem solid lightgray;
+      border-radius: 4rem;
+      background-color: transparent;
+      margin-right: 1rem;
+      &-logo {
+        width: 1rem;
+        height: 1rem;
+      }
+      &-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+  }
+
+  .search {
+    &-current {
+      &-from-to {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        // margin-left: rem;
+      }
+      &-date-modify {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0rem;
+      }
+      &-result {
+        display: flex;
+        // flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: auto;
+        font-weight: 600;
+        padding: 1rem;
+        &-arrow {
+          margin: 0.5rem 0rem;
+        }
+
+        &-date {
+          &-box {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .result {
+    box-sizing: border-box;
+    padding: 0rem 1rem;
+    width: 100%;
+    min-height: auto;
+    &-count {
+      font-weight: 400;
+    }
+
+    &-each {
+      box-sizing: border-box;
+
+      box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.452);
+
+      &:hover {
+        box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.452);
+      }
+      &-data {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: flex-start;
+        justify-content: space-between;
+        &-name {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          width: 50%;
+        }
+        &-departure {
+          display: flex;
+          flex-direction: row;
+          width: 50%;
+          justify-content: space-between;
+          &-time {
+            padding: 1rem 0rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            width: 40%;
+          }
+          &-place {
+            padding: 1rem 0rem;
+            font-size: 0.9rem;
+            color: gray;
+            width: 60%;
+          }
+        }
+
+        &-arrival {
+          display: flex;
+          flex-direction: row;
+          width: 50%;
+          justify-content: space-between;
+          &-time {
+            width: 40%;
+            padding: 1rem 0rem;
+            font-size: 1.1rem;
+          }
+          &-place {
+            width: 60%;
+            padding: 1rem 0rem;
+            font-size: 0.9rem;
+            color: gray;
+          }
+        }
+        &-total-time {
+          // align-self: center;
+          width: 50%;
+          padding: 1rem 0rem;
+          font-size: 1rem;
+        }
+
+        &-price {
+          width: 50%;
+        }
+
+        &-extra {
+          width: 50%;
+          // align-self: flex-end;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: flex-start;
+          padding: 0rem 0rem;
+          &-available {
+            font-size: 1rem;
+            color: gray;
+          }
+          &-windows {
+            font-size: 1rem;
+            color: gray;
+          }
+        }
+      }
+      &-amenities {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+
+        &-each {
+          padding: 0.5rem;
+          &-logo {
+            width: 1.5rem;
+          }
+        }
+      }
+      &-seats {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+
+        &-button {
+          border: none;
+          padding: 0.8rem 2rem;
+          color: white;
+          background-color: $theme-color;
+          font-size: 1rem;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .booking {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    margin-top: 0rem;
+    padding-top: 2rem;
+    background-color: white;
+    &-seat-price {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    &-box {
+      display: flex;
+      flex-wrap: wrap-reverse;
+      align-items: flex-start;
+      padding: 0rem 0.5rem;
+      box-sizing: border-box;
+      width: 100%;
+      &-seat {
+        width: 100vw;
+        padding: 0rem 0.5rem;
+      }
+    }
+
+    &-cancel {
+      &-button {
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        right: 0.2rem;
+        top: 0.2rem;
+      }
+      &-logo {
+        width: 1.5rem;
+      }
+    }
+
+    &-price-button {
+      width: min-content;
+      height: min-content;
+      margin: 0.5rem 0.5rem;
+      padding: 0.5rem 2rem;
+      color: $theme-color;
+      background-color: white;
+      border: 0.2rem solid $theme-color;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    &-price-button-clicked {
+      border: 0.2rem solid $theme-color;
+      color: white;
+      background-color: $theme-color;
+    }
+
+    &-bus-seats {
+      box-sizing: border-box;
+      margin-right: 1rem;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &-bus-option {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  .legend {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    &-sub {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      &-each {
+        margin: 0.5rem 0rem;
+        padding: 0rem 0rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &-logo {
+          width: 2rem;
+          height: 2rem;
+          background-color: white;
+          border: 0.1rem solid black;
+          margin: 0rem 1rem;
+        }
+
+        &-unavailable {
+          background-color: gray;
+        }
+      }
+    }
+  }
+
+  .deck {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: white;
+    border-left: 0rem solid gray;
+    border-top: 0.5rem solid gray;
+
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    &-steering {
+      padding: 1rem;
+      &-logo {
+        width: 1.2rem;
+      }
+    }
+    &-seats {
+      display: flex;
+      margin-top: -0.5rem;
+      padding: 0.3rem;
+      justify-content: space-evenly;
+      border-left: 0rem solid gray;
+      border-top: 0.15rem solid gray;
+      width: 100%;
+      &-row {
+        display: flex;
+        flex-direction: column;
+        margin: 0rem 0.2rem;
+      }
+      &-each {
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        width: 2.5rem;
+        height: 3.5rem;
+        font-size: 0.9rem;
+        font-weight: 700;
+        // color: white;
+        align-items: center;
+        border: 0.13rem solid gray;
+        margin: 0.1rem 0.1rem;
+        &:hover {
+          border: 0.13rem solid black;
+        }
+
+        &-select {
+          background-color: black;
+          color: white;
+        }
+
+        &:disabled {
+          border: 0.13rem solid gray;
+          background-color: gray;
+        }
+      }
+    }
+  }
+
+  .booking-option {
+    padding: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    border: 0.15rem solid gray;
+    &-button {
+      border: 0rem;
+      font-size: 1.2rem;
+      padding: 1rem 2rem;
+      background-color: transparent;
+      width: 50%;
+      &-box {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      &-selected {
+        color: $theme-color;
+        border-bottom: 0.3rem solid $theme-color;
+      }
+    }
+
+    &-each {
+      &-checkbox {
+        width: 100%;
+        display: flex;
+        margin-bottom: 1rem;
+        align-items: flex-start;
+        justify-content: flex-start;
+        &-logo {
+          &-outer {
+            padding: 0;
+            box-sizing: border-box;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 1.2rem;
+            border: 0.1rem solid black;
+          }
+          &-select {
+            padding: 0;
+            box-sizing: border-box;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 1.2rem;
+            border: 0.4rem solid $theme-color;
+          }
+        }
+      }
+
+      &-time {
+        padding: 0rem 1rem;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      &-address {
+        width: 70%;
+        line-height: auto;
+        text-align: left;
+      }
+    }
+  }
+
+  .passenger {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgba(0, 0, 0, 0.473);
+    &-scroll {
+      overflow-y: auto;
+
+      height: 70vh;
+    }
+
+    &-book-ticket-button {
+      width: auto;
+      border: none;
+      background-color: $theme-color;
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      padding: 1rem;
+    }
+    &-row {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      height: 100vh;
+      width: 100vw;
+      padding: 0rem 0.5rem;
+      background-color: white;
+      box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.452);
+    }
+    &-back-button {
+      border: none;
+      background-color: transparent;
+      padding: 1rem;
+      background-image: url(./images/cancel.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 1.5rem 1.5rem;
+    }
+
+    &-information {
+      &-logo {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+      }
+      &-box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    }
+
+    &-form {
+      box-sizing: border-box;
+      font-size: 0.9rem;
+      margin: 0.2rem;
+      // border-bottom: 2px solid gray;
+      box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.452);
+      padding: 1rem;
+      &-button {
+        display: none;
+        border: none;
+        background-color: $theme-color;
+        color: white;
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+      }
+
+      &-title {
+        margin: 1rem 0rem;
+      }
+
+      &-column {
+        display: flex;
+        flex-direction: column;
+        &-disable {
+          flex: 1;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+      &-row {
+        display: flex;
+        justify-content: space-between;
+        &-disable {
+          flex: 1;
+          flex-direction: column;
+        }
+      }
+    }
+
+    &-bill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      margin-bottom: 1rem;
+      border-top: 0.2rem solid $theme-color;
+      &-amount {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+    }
+  }
+
+  .payment {
+    &-color {
+      background-color: $payment-color;
+    }
+    &-detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      box-sizing: border-box;
+      height: 100vh;
+      width: 100vw;
+      padding: 0.5rem 0.5rem;
+      background-color: white;
+      box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.452);
+    }
+    &-box {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      align-items: center;
+      justify-content: center;
+    }
+    &-logo {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    &-title {
+      font-size: 2rem;
+      color: $payment-color;
+    }
+    &-pdf {
+      margin-top: 1rem;
+    }
+    &-amount {
+      &-box {
+        width: 70%;
+        border: 0.2rem solid $payment-color;
+        padding: 1rem;
+        display: flex;
+        align-self: center;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      &-title {
+        font-size: 1.2rem;
+      }
+
+      &-value {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .payment-loading {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    &-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      &-box {
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    &-half-circle {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50vw;
+      transform: translate(0, -50%);
+      height: 60px;
+      width: 30px;
+      border-radius: 0 100px 100px 0;
+      background-color: rgba(0, 0, 0, 0.473);
+      filter: "blur";
+    }
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 1080px) {
+  .search {
+    &-current {
+      &-from-to {
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        // margin-left: rem;
+      }
+      &-date-modify {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-right: 0rem;
+      }
+      &-result {
+        display: flex;
+        // flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: auto;
+        font-weight: 600;
+        padding: 1rem;
+        &-arrow {
+          margin: 0.5rem 1rem;
+        }
+
+        &-date {
+          &-box {
+            margin-bottom: 0rem;
+          }
+        }
+      }
+    }
+  }
+
+  .deck {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: white;
+    border-left: 0.5rem solid gray;
+
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    &-steering {
+      padding: 1rem;
+      &-logo {
+        width: 1.2rem;
+      }
+    }
+    &-seats {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0.15rem;
+      padding: 0rem;
+      justify-content: space-evenly;
+      border-left: 0.15rem solid gray;
+      border-top: 0rem solid gray;
+      width: 100%;
+      &-row {
+        width: 100%;
+        // background-color: rebeccapurple;
+        align-items: center;
+        justify-content: space-evenly;
+        display: flex;
+        flex-direction: row;
+        margin: 0.2rem 1rem;
+      }
+      &-each {
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        width: 4rem;
+        height: 2.5rem;
+        font-size: 0.9rem;
+        font-weight: 700;
+
+        // color: white;
+        align-items: center;
+        border: 0.13rem solid gray;
+        margin: 0rem 0.2rem;
+        &:hover {
+          border: 0.13rem solid black;
+        }
+
+        &-select {
+          background-color: black;
+          color: white;
+        }
+
+        &:disabled {
+          border: 0.13rem solid gray;
+          background-color: gray;
+        }
+      }
+    }
+  }
 }

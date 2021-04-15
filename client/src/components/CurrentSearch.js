@@ -24,37 +24,41 @@ export default function CurrentSearch({ onModifyClicked, from, to, date }) {
   return (
     <>
       <div className="search-current-result">
-        <span>{from}</span>
-        <img src={rightArrow} className="search-current-result-arrow" />
-        <span>{to}</span>
-        <div className="search-current-result-date-box">
-          <button
-            className="search-current-result-button"
-            onClick={handlePreviousButton}
-          >
-            <img src={next} className="search-current-result-previous" />
-          </button>
-          <div className="search-current-result-date-text">
-            <span className="search-current-result-date-text-title">
-              {moment(date).format("DD MMM")}
-            </span>
-            <span className="search-current-result-date-text-subtitle">
-              {moment(date).format("ddd")}
-            </span>
+        <div className="search-current-from-to">
+          <span>{from}</span>
+          <img src={rightArrow} className="search-current-result-arrow" />
+          <span>{to}</span>
+        </div>
+        <div className="search-current-date-modify">
+          <div className="search-current-result-date-box">
+            <button
+              className="search-current-result-button"
+              onClick={handlePreviousButton}
+            >
+              <img src={next} className="search-current-result-previous" />
+            </button>
+            <div className="search-current-result-date-text">
+              <span className="search-current-result-date-text-title">
+                {moment(date).format("DD MMM")}
+              </span>
+              <span className="search-current-result-date-text-subtitle">
+                {moment(date).format("ddd")}
+              </span>
+            </div>
+            <button
+              className="search-current-result-button"
+              onClick={handleNextButton}
+            >
+              <img src={next} className="search-current-result-arrow" />
+            </button>
           </div>
           <button
-            className="search-current-result-button"
-            onClick={handleNextButton}
+            className="search-current-result-modify"
+            onClick={onModifyClicked}
           >
-            <img src={next} className="search-current-result-arrow" />
+            Modify
           </button>
         </div>
-        <button
-          className="search-current-result-modify"
-          onClick={onModifyClicked}
-        >
-          Modify
-        </button>
       </div>
     </>
   );

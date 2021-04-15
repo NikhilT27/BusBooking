@@ -77,8 +77,8 @@ export default function EachPassengerForm({
           required="required"
         ></input>
       </div>
-      <div className="passenger-form-row">
-        <div className="passenger-form-column">
+      <div className="passenger-form-row passenger-form-row-disable">
+        <div className="passenger-form-column passenger-form-column-disable">
           <label className="passenger-form-title">Gender</label>
           <div>
             <input
@@ -101,7 +101,7 @@ export default function EachPassengerForm({
             <label for="female">Female</label>
           </div>
         </div>
-        <div className="passenger-form-column">
+        <div className="passenger-form-column passenger-form-column-disable">
           <label className="passenger-form-title">Age</label>
           <input
             onChange={handleChange}

@@ -178,9 +178,12 @@ export default function PassengerDetail({
           </div>
         </div>
         <div className="passenger-bill">
-          <span>
-            Total Amount : <strong>INR {total}</strong>
-          </span>
+          <div className="passenger-bill-amount">
+            <span>Total Amount :</span>
+            <span>
+              <strong>INR {total}</strong>
+            </span>
+          </div>
           <button className="passenger-book-ticket-button" onClick={SubmitForm}>
             PROCEED TO PAY
           </button>

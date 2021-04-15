@@ -6,8 +6,8 @@ import ModifyCurrentSearch from "./ModifyCurrentSearch";
 import CurrentSearch from "./CurrentSearch";
 import EachBusData from "./EachBusData";
 import Loading from "./Loading";
-import { addDate } from "../features/seats/seatsSlice";
-import { useDispatch } from "react-redux";
+import { addDate, selectBus } from "../features/seats/seatsSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -20,7 +20,7 @@ export default function SearchBus() {
   let date = query.get("date");
 
   let dispatch = useDispatch();
-
+  let busSelectedId = useSelector(selectBus);
   const [modify, setModify] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -89,10 +89,16 @@ export default function SearchBus() {
                   {data.length} Buses{" "}
                   <span className="result-count">Found</span>
                 </h3>
-                {data.length != 0 &&
-                  data.map((eachbus) => {
-                    return <EachBusData key={eachbus._id} data={eachbus} />;
-                  })}
+                {busSelectedId === ""
+                  ? data.length != 0 &&
+                    data.map((eachbus) => {
+                      return <EachBusData key={eachbus._id} data={eachbus} />;
+                    })
+                  : data.length != 0 &&
+                    data.map((eachbus) => {
+                      if (busSelectedId === eachbus._id)
+                        return <EachBusData key={eachbus._id} data={eachbus} />;
+                    })}
               </div>
             )}
           </>

@@ -88,8 +88,8 @@ export default function Deck({ data, type }) {
               })}
         </div>
 
-        <div className="deck-seats-row"></div>
-        <div className="deck-seats-row"></div>
+        <div className="deck-seats-row "></div>
+        <div className="deck-seats-row "></div>
         <div className="deck-seats-row">
           {type === "Lower"
             ? seatOddAlphabet.map((letter) => {
