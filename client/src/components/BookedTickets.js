@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
 
 const MyDocument = ({ ticketInfo, totalCost, busData }) => (
   <Document>
-    <Page size="A4" style={styles.page}>
+    <Page pageNumber={1} size="A4" style={styles.page}>
       <View style={styles.ticketBox}>
         <View style={styles.titleBox}>
           <View style={styles.logoBox}>
