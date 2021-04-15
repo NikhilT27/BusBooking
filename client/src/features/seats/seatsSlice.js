@@ -82,6 +82,14 @@ export const seatsSlice = createSlice({
       state.passengerData = [];
       state.contactData = {};
     },
+
+    addSelectedBus: (state, action) => {
+      state.selectedBus = action.payload;
+    },
+
+    removeSelectedBus: (state) => {
+      state.selectedBus = "";
+    },
   },
 });
 
@@ -95,6 +103,8 @@ export const {
   addPassengerData,
   addContactData,
   addDate,
+  addSelectedBus,
+  removeSelectedBus,
 } = seatsSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It

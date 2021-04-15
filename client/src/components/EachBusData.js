@@ -8,6 +8,8 @@ import {
   emptyBookedSeats,
   selectSeats,
   addBookedSeats,
+  addSelectedBus,
+  removeSelectedBus,
 } from "../features/seats/seatsSlice";
 import moment from "moment";
 
@@ -33,9 +35,11 @@ export default function EachBusData({ data }) {
 
   function openBooking() {
     setOpenSeats(!openSeats);
+    dispatch(removeSelectedBus());
     if (!openSeats) {
       dispatch(emptySeats());
       dispatch(emptyBookedSeats());
+      dispatch(addSelectedBus(_id));
     }
   }
 
