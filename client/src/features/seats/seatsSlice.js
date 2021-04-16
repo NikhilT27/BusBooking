@@ -24,7 +24,7 @@ export const seatsSlice = createSlice({
       }
 
       if (state.value.length !== 0) {
-        state.selectedBus = busId;
+        state.selectedBus = "";
         state.selectedBusData = data;
       } else {
         let emptyData = {};
