@@ -9,7 +9,7 @@ import {
   PDFViewer,
   Image,
 } from "@react-pdf/renderer";
-import busLogo from "../images/bus.png";
+import busLogo from "../images/buslogo.png";
 import phoneLogo from "../images/telephone.png";
 
 const styles = StyleSheet.create({
@@ -241,7 +241,7 @@ const MyDocument = ({ ticketInfo, totalCost, busData }) => (
                     Location:
                   </Text>
                   <Text style={styles.busDetailTextAddress}>
-                    {ticketInfo[0].boarding_point}
+                    {ticketInfo[0].boarding_point + ", " + busData.from}
                   </Text>
                 </View>
               </View>
@@ -267,7 +267,7 @@ const MyDocument = ({ ticketInfo, totalCost, busData }) => (
                     Location:
                   </Text>
                   <Text style={styles.busDetailTextAddress}>
-                    {ticketInfo[0].dropping_point}
+                    {ticketInfo[0].dropping_point + ", " + busData.to}
                   </Text>
                 </View>
               </View>

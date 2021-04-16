@@ -19,7 +19,7 @@ export default function EachDeckSeat({ id, busId, data }) {
   }, [seatType]);
 
   function handleClick(e) {
-    dispatch(addSeat({ name: e.target.name, busId: busId, data: data }));
+    dispatch(addSeat({ name: e.target.name, data: data }));
     setSelect(!select);
   }
 

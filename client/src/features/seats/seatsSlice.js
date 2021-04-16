@@ -14,7 +14,7 @@ export const seatsSlice = createSlice({
   },
   reducers: {
     addSeat: (state, action) => {
-      let { name, busId, data } = action.payload;
+      let { name, data } = action.payload;
       if (state.value.includes(name)) {
         let index = state.value.indexOf(name);
 
@@ -24,11 +24,10 @@ export const seatsSlice = createSlice({
       }
 
       if (state.value.length !== 0) {
-        state.selectedBus = "";
         state.selectedBusData = data;
       } else {
         let emptyData = {};
-        state.selectedBus = "";
+
         state.selectedBusData = emptyData;
       }
     },

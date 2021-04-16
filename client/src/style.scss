@@ -659,6 +659,11 @@ button {
   box-sizing: border-box;
   padding: 1rem 1rem;
   width: 100%;
+  &-alert {
+    font-size: 1rem;
+    font-weight: 700;
+    color: red;
+  }
   &-button {
     border: none;
     background-color: $theme-color;

@@ -18,6 +18,7 @@ export default function BookingOptions({ data }) {
   const [droppingPoint, setDroppingPoint] = useState("");
   const [showBill, setShowBill] = useState(false);
   const [showPassengerDetail, setShowPassengerDetail] = useState(false);
+  const [missingData, setMissingData] = useState("");
 
   const ButtonRef = useRef();
 
@@ -47,6 +48,17 @@ export default function BookingOptions({ data }) {
   }
 
   function handleContinueClick() {
+    if (totalCost() == 0) {
+      setMissingData("Select Seat/Seats");
+      console.log("select seatss");
+    } else if (boardingPoint == "") {
+      setMissingData("Select Boarding Point");
+      console.log("select boarding point");
+    } else if (droppingPoint == "") {
+      setMissingData("Select Dropping Point");
+      console.log("select Dropping Point");
+    }
+
     if (totalCost() != 0) {
       if (boardingPoint !== "" && droppingPoint !== "") {
         setShowBill(!showBill);
@@ -234,6 +246,7 @@ export default function BookingOptions({ data }) {
             })}
         </ul>
         <div className="booking-confirm">
+          <span className="booking-confirm-alert">{missingData}</span>
           <div className="booking-confirm-button-box">
             <strong>Amount</strong>
             <strong>
