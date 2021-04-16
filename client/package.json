@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://busbooking-backend-27.herokuapp.com",
+  "proxy": "https://nonredbus-nikhilt27.herokuapp.com",
   "dependencies": {
     "@react-pdf/renderer": "^2.0.2",
     "@reduxjs/toolkit": "^1.5.1",
