@@ -1,0 +1,3 @@
+/ /index.html 200
+
+/bus/*  https://nonredbus-nikhilt27.herokuapp.com/bus/:splat  200
